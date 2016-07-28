@@ -3,6 +3,7 @@
 ## Objectives
 
 1. Practice using `bind()`
+2. Explain when to use `bind()`
 
 ## Overview
 

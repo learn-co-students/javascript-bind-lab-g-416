@@ -1,79 +1,31 @@
 # JavaScript bind() Lab
 
 ## Objectives
-
 1. Practice using `bind()`
 2. Explain when to use `bind()`
 
-## Overview
+## Tick, tock...
+![Old clock](https://media.giphy.com/media/JUvTQ9K4QM6vC/giphy.gif)
 
-`bind()` can be a bit wonky to get used to, so we should give students plenty of
-practice.
+That's it. We've had to repair this old clock too many times now. Let's create a digital one instead!
+ 
+1. Create an object called `digitalClock`
+2. This object should have two properties:
+    1. `time`: the current time in _seconds_, rounded off (Hint: take a look at `Date`)
+    2. `tick`: a method that increases the `time` property with one second every second. Use `.bind()` or ES2015 arrow
+    functions to correctly set the property!
 
-Maybe we have some Pokémon
+## So much for free speech
+![Fox Censor](https://media.giphy.com/media/NZ1e0alYFBKh2/giphy.gif)
 
-```javascript
-class Pokemon {
-  // `evolutions` might be an object with level-name pairs
-  constructor(name, level, evolutions) {
-    this.name = name
-    this.level = level
-    this.evolutions = evolutions
-  }
+Let's automate the censoring process for Fox TV!
 
-  attemptEvolution() {
-    const evolution = this.evolutions[this.level]
-
-    if (evolution &&
-        confirm(`${this.name} is about to evolve into ${evolution} — is that okay?`)) {
-      alert(`${this.name} is evolving!`)
-
-      // We could also do this with `bind()`!
-      setTimeout(() => {
-        alert(`${this.name} evolved into ${evolution}!`)
-        this.name = evolution
-      }, 1000)
-    }
-  }
-
-  levelUp() {
-    this.level = this.level + 1
-
-    this.attemptEvolution()
-  }
-}
-```
-
-Note that the evolution function can be fixed with `bind()` or an arrow function
-— we should show students both solutions (the arrow function is probably
-preferable in this case, though).
-
-But what if we have a Pokémon that evolves with a Moon Stone?
-
-```javascript
-function useMoonStone() {
-  const level = this.level
-
-  this.level = 'moonStone'
-
-  this.attemptEvolution()
-
-  this.level = level
-}
-```
-
-This function obviously won't work out of the box, but we can use it like so
-
-```javascript
-const clefairy = new Pokemon('Clefairy', 2, { moonStone: 'Clefable' })
-
-clefairy.evolve = useMoonStone.bind(clefairy)
-
-clefairy.evolve()
-```
-
-(This is super contrived, but kind of fun, right?)
+1. Create a function called `censor`. This function takes two arguments: the word being censored, and the string that
+should be sanitized. Don't worry about case matching for this exercise.
+2. The `censor` function should return the input string, with the censored word being replaced with `'BLEEP'`.
+3. Create a `violenceCensor` function (using `.bind()` and the `censor()` function) that will censor the word `'violence'`.
+3. Create a `drugsCensor` function (using `.bind()` and the `censor()` function) that will censor the word `'drugs'`.
 
 ## Resources
-
+- [MDN: Bind](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
 - [When and how to bind your functions](http://reactkungfu.com/2015/07/why-and-how-to-bind-methods-in-your-react-component-classes/)

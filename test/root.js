@@ -1,7 +1,9 @@
 global.expect = require('expect');
+global.sinon = require('sinon');
 
 const jsdom = require('jsdom');
 const path = require('path');
+const fs = require('fs');
 
 before(function(done) {
   const src = path.resolve(__dirname, '..', 'index.js');
@@ -9,6 +11,8 @@ before(function(done) {
     presets: ['es2015']
   });
   const html = path.resolve(__dirname, '..', 'index.html');
+
+  global.srcCode = fs.readFileSync(src, 'utf8');
 
   jsdom.env(html, [], { src: babelResult.code }, (err, window) => {
     if (err) {

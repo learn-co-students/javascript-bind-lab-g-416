@@ -1,5 +1,3 @@
-const sinon = require('sinon');
-
 describe('Tick, tock...', function () {
   it('should have an object called `digitalClock`', function () {
     expect(digitalClock).toBeAn('object');

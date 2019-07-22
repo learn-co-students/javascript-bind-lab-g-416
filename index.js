@@ -7,10 +7,10 @@ const digitalClock = {
 
 const censor = (cens, string) => {
   // cens will be the value of the word that needs to be censored
-   var regex = new RegExp(cens, 'gi');
+  var regex = new RegExp(cens, 'gi');
   return string.replace(regex, 'BLEEP');
 }
 
-const violenceCensor = censor.bind(null, 'violence')
+const violenceCensor = (string) => censor('violence', string)
 
-const drugsCensor = censor.bind(null, 'drugs')
+const drugsCensor = (string) => censor('drugs', string)

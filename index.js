@@ -1,6 +1,10 @@
-let digitalClock={time:(Math.round(Date.now() / 1000)), startTicking: function(t){
-    setInterval(this.time+1,1000).bind(this)
-}};
+const digitalClock = {
+    time: Math.round(Date.now() / 1000),
+    startTicking: function () {
+      setInterval(() => this.time++, 1000);
+    }
+  };
+  
 
  function censor(word,string){
      return string.split(word).join("BLEEP")
@@ -8,6 +12,6 @@ let digitalClock={time:(Math.round(Date.now() / 1000)), startTicking: function(t
 
     const violenceCensor = censor.bind(null, 'violence');
     const drugsCensor = censor.bind(null, 'drugs');
-}
+
 
 

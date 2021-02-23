@@ -13,3 +13,4 @@ function drugsCensor(string){
    return censor("drugs",string)
 }
 
+console.log(global)
